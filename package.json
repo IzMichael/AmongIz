@@ -1,0 +1,22 @@
+{
+  "name": "amongiz",
+  "version": "1.0.0",
+  "description": "A bot for my personal Among Us Discord server.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IzMichael/AmongIz.git"
+  },
+  "author": "IzMichael",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/IzMichael/AmongIz/issues"
+  },
+  "homepage": "https://github.com/IzMichael/AmongIz#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}

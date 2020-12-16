@@ -2,7 +2,7 @@
 
 ## Installation
 You will need to follow [this guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot) to set up the bot account.
-1. Run `npm i AmongIz` in the command line
+1. Download and extract the latest release from [this link](https://github.com/IzMichael/AmongIz/releases/latest)
 2. Create a `config.json` file in the directory that contains `main.js`
 3. Paste the following into `config.json`
 ```

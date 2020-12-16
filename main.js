@@ -21,27 +21,37 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(' ');
     const command = args.shift().toLowerCase();
 
-    remaining = (10 - playerlist.length)
-    const playerlistmsg = "**Current Players:**\n" + playerlist.join('\r\n') + "\n\n**There are " + playerlist.length + " players**\n" + remaining + " players are needed for a full game";
-
     // Commands \/
 
     if (command === 'add') {
         const taggedUser = message.mentions.users.first();
         console.log(taggedUser);
         playerlist.push(taggedUser);
-        message.channel.send(playerlistmsg);
+        remaining = (10 - playerlist.length)
+        message.channel.send("**Current Players:**\n" + playerlist.join('\r\n') + "\n\n**There are " + playerlist.length + " players**\n" + remaining + " players are needed for a full game");
         console.log(playerlist);
         return
     } else if (command === 'clear') {
         playerlist = [];
         message.channel.send("Cleared the Player List");
         return
+    } else if (command === 'remove') {
+        for( var i = 0; i < playerlist.length; i++){ 
+                                   
+            if ( playerlist[i] === message.mentions.users.first()) { 
+                playerlist.splice(i, 1); 
+                i--; 
+            }
+        }
+        remaining = (10 - playerlist.length)
+        message.channel.send("**Current Players:**\n" + playerlist.join('\r\n') + "\n\n**There are " + playerlist.length + " players**\n" + remaining + " players are needed for a full game");
+        return
     } else if (command === 'list') {
         if (!playerlist.length) {
             return message.channel.send("The Player List is currently empty. Use `iz!add @USER` to add a player, or `iz!help` for more commands.")
         }
-        message.channel.send(playerlistmsg);
+        remaining = (10 - playerlist.length)
+        message.channel.send("**Current Players:**\n" + playerlist.join('\r\n') + "\n\n**There are " + playerlist.length + " players**\n" + remaining + " players are needed for a full game");
         return
     } else if (command === 'help') {
         const helpEmbed = new Discord.MessageEmbed()
@@ -52,12 +62,16 @@ client.on('message', message => {
                 value: 'Adds a player to the list of all current players',
                 inline: true
             }, {
-                name: '`iz!clear`',
-                value: 'Clears the list of all current players',
+                name: '`iz!remove @USER`',
+                value: 'Removes a player from the list of all current players',
                 inline: true
             }, {
                 name: '`iz!list`',
                 value: 'Lists all current players',
+                inline: true
+            }, {
+                name: '`iz!clear`',
+                value: 'Clears the list of all current players',
                 inline: true
             }, )
 
